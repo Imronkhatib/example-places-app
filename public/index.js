@@ -4,15 +4,27 @@ var HomePage = {
   template: "#home-page",
   data: function() {
     return {
-      places: 
-      {
-        name: "Africa",
-        address: "Somewhere on the map of this earth"
-      }
+      places: []
+      // ,
+      // newPlace: 
+      // {
+      //   name: "",
+      //   address:""
+      // }
     };
   },
-  created: function() {},
-  methods: {},
+  created: function() {
+    axios.get("/places").then(function(response) {
+      console.log(response.data);
+      this.place = response.data;
+    }.bind(this));
+  },
+  methods: {
+    // addPlace: function() {
+    //   console.log("The Button is Functioning");
+
+    // }
+  },
   computed: {}
 };
 
